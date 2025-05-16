@@ -25,7 +25,7 @@ function getBanner() {
     })
   ) + '\n' +
     chalk.bold('-------------------------------------------------\n') +
-    chalk.bold('   Pharos Testnet Auto Bot - Airdrop Insiders\n') +
+    chalk.bold('   Pharos Testnet Auto Bot - Airdrop Seeker\n') +
     chalk.bold('-------------------------------------------------\n');
 }
 
