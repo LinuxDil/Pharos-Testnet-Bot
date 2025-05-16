@@ -16,17 +16,32 @@ const colors = {
   bold: '\x1b[1m',
 };
 
+function centerText(text) {
+  const columns = process.stdout.columns || 80;
+  const lines = text.split('\n');
+
+  return lines.map(line => {
+    const lineLength = line.replace(/\x1b\[[0-9;]*m/g, '').length;
+    if (lineLength >= columns) return line;
+    const leftPadding = Math.floor((columns - lineLength) / 2);
+    return ' '.repeat(leftPadding) + line;
+  }).join('\n');
+}
+
 function getBanner() {
-  return chalk.cyan(
-    figlet.textSync('Pharos Bot', {
-      horizontalLayout: 'default',
-      verticalLayout: 'default',
-      width: 80,
-    })
-  ) + '\n' +
-    chalk.bold('-------------------------------------------------\n') +
-    chalk.bold('   Pharos Testnet Auto Bot - Airdrop Seeker\n') +
-    chalk.bold('-------------------------------------------------\n');
+  const asciiArt = figlet.textSync('Pharos Bot', {
+    horizontalLayout: 'default',
+    verticalLayout: 'default',
+    width: 80,
+  });
+
+  const bannerText = 
+    '-------------------------------------------------\n' +
+    '   Pharos Testnet Auto Bot - Airdrop Seeker\n' +
+    '-------------------------------------------------\n';
+
+  return chalk.cyan(centerText(asciiArt)) + '\n' +
+    chalk.bold(centerText(bannerText));
 }
 
 // Cetak banner satu kali saat script dimulai
