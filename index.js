@@ -456,8 +456,8 @@ const performCheckIn = async (wallet, proxy = null) => {
 };
 
 const countdown = async () => {
-  const totalSeconds = 30 * 60; 
-  logger.info('Starting 30-minute countdown...');
+  const totalSeconds = 24 * 60 * 60; 
+  logger.info('Starting 24-jam countdown...');
 
   for (let seconds = totalSeconds; seconds >= 0; seconds--) {
     const minutes = Math.floor(seconds / 60);
