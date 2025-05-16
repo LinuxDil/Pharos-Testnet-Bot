@@ -460,9 +460,8 @@ const countdown = async () => {
   logger.info('Starting 24-jam countdown...');
 
   for (let seconds = totalSeconds; seconds >= 0; seconds--) {
-    const minutes = Math.floor(seconds / 60);
     const secs = seconds % 60;
-    process.stdout.write(`\r${colors.cyan}Time remaining: ${minutes}m ${secs}s${colors.reset} `);
+    process.stdout.write(`\r${colors.cyan}Time remaining: ${hours}h ${minutes}m ${secs}s${colors.reset} `);
     await new Promise(resolve => setTimeout(resolve, 1000));
   }
   process.stdout.write('\rCountdown complete! Restarting process...\n');
