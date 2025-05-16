@@ -29,7 +29,7 @@ function centerText(text) {
 }
 
 function getBanner() {
-  const asciiArt = figlet.textSync('Pharos Bot', {
+  const asciiArt = figlet.textSync('Pharos Testnet Bot', {
     horizontalLayout: 'default',
     verticalLayout: 'default',
     width: 80,
