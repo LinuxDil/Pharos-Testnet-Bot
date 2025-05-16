@@ -455,28 +455,26 @@ const performCheckIn = async (wallet, proxy = null) => {
   }
 };
 
-function countdown(hours = 24) {
-  const totalSeconds = hours * 60 * 60;
-  let remainingSeconds = totalSeconds;
-
-  const interval = setInterval(() => {
-    const hrs = Math.floor(remainingSeconds / 3600);
-    const mins = Math.floor((remainingSeconds % 3600) / 60);
-    const secs = remainingSeconds % 60;
-
-    process.stdout.write(
-      `\r${colors.yellow}[!] ${colors.cyan}Next claim in: ${String(hrs).padStart(2, '0')}:${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}${colors.reset}`
-    );
-
-    if (remainingSeconds <= 0) {
-      clearInterval(interval);
-      process.stdout.write('\n');
-      start(); // jalankan ulang bot setelah countdown
-    } else {
-      remainingSeconds--;
-    }
-  }, 1000);
+function countdownTimer(durationInSeconds) {
+  return new Promise((resolve) => {
+    let remaining = durationInSeconds;
+    const interval = setInterval(() => {
+      const hrs = Math.floor(remaining / 3600);
+      const mins = Math.floor((remaining % 3600) / 60);
+      const secs = remaining % 60;
+      process.stdout.write(
+        `\r⏳ Menunggu ${hrs.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')} hingga siklus berikutnya... `
+      );
+      remaining--;
+      if (remaining < 0) {
+        clearInterval(interval);
+        console.log('\n✅ Waktu tunggu selesai. Memulai ulang...');
+        resolve();
+      }
+    }, 1000);
+  });
 }
+
 
 
 const main = async () => {
