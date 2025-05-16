@@ -455,19 +455,29 @@ const performCheckIn = async (wallet, proxy = null) => {
   }
 };
 
-const countdown = async () => {
-  const totalSeconds = 24 * 60 * 60; 
-  logger.info('Starting 24-jam countdown...');
+function countdown(hours = 24) {
+  const totalSeconds = hours * 60 * 60;
+  let remainingSeconds = totalSeconds;
 
-  for (let seconds = totalSeconds; seconds >= 0; seconds--) {
-    const hours = Math.floor(minutes / 60);
-    const minutes = Math.floor(seconds / 60);
-    const secs = seconds % 60;
-    process.stdout.write(`\r${colors.cyan}Time remaining: ${hours}h ${minutes}m ${secs}s${colors.reset} `);
-    await new Promise(resolve => setTimeout(resolve, 1000));
-  }
-  process.stdout.write('\rCountdown complete! Restarting process...\n');
-};
+  const interval = setInterval(() => {
+    const hrs = Math.floor(remainingSeconds / 3600);
+    const mins = Math.floor((remainingSeconds % 3600) / 60);
+    const secs = remainingSeconds % 60;
+
+    process.stdout.write(
+      `\r${colors.yellow}[!] ${colors.cyan}Next claim in: ${String(hrs).padStart(2, '0')}:${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}${colors.reset}`
+    );
+
+    if (remainingSeconds <= 0) {
+      clearInterval(interval);
+      process.stdout.write('\n');
+      start(); // jalankan ulang bot setelah countdown
+    } else {
+      remainingSeconds--;
+    }
+  }, 1000);
+}
+
 
 const main = async () => {
   logger.banner();
