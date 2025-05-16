@@ -512,7 +512,7 @@ const main = async () => {
 
     logger.success('All actions completed for all wallets!');
 
-    await countdown();
+    await countdownTimer(24 * 60 * 60);
   }
 };
 
