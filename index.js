@@ -44,11 +44,9 @@ function getBanner() {
     chalk.bold(centerText(bannerText));
 }
 
-// Cetak banner satu kali saat script dimulai
 console.clear();
 console.log(getBanner());
 
-// Logger seperti versi asli kamu
 const logger = {
   info: (msg) => console.log(`${colors.green}[✓] ${msg}${colors.reset}`),
   wallet: (msg) => console.log(`${colors.yellow}[➤] ${msg}${colors.reset}`),
