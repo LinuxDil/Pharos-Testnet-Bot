@@ -204,7 +204,7 @@ const getMulticallData = (pair, amount, walletAddress) => {
 const performSwap = async (wallet, provider, index) => {
   try {
     const pair = pairOptions[Math.floor(Math.random() * pairOptions.length)];
-    const amount = pair.from === 'WPHRS' ? 0.001 : 0.1; 
+    const amount = pair.from === 'WPHRS' ? 0.00001 : 0.001; 
     logger.step(`Preparing swap ${index + 1}: ${pair.from} -> ${pair.to} (${amount} ${pair.from})`);
 
     const decimals = tokenDecimals[pair.from];
