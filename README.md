@@ -9,5 +9,10 @@ This is a Script For Auto Transfer, Swap, Daily Checkin, Claim Faucet
   </a>
 </div>
 
+---
 
+## This Bot From Chelvin
+Support Chelvin for always making a bot 
+Donate Here
+https://saweria.co/vinsenzo
 ---
