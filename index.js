@@ -1223,7 +1223,7 @@ function updateStatus() {
     : isCycleRunning
       ? `${loadingSpinner[spinnerIndex]} ${chalk.yellowBright("Waiting for next cycle")}`
       : chalk.green("Idle");
-  const statusText = `Status: ${status} | Active Account: ${getShortAddress(walletInfo.address)} | Total Accounts: ${privateKeys.length} | Swap: ${dailyActivityConfig.swapRepetitions}x | Send: ${dailyActivityConfig.sendPhrsRepetitions}x`;
+  const statusText = `Status: ${status} | Active Account: ${getShortAddress(walletInfo.address)} | Total Accounts: ${privateKeys.length} | Swap: ${dailyActivityConfig.swapRepetitions}x | Send: ${dailyActivityConfig.sendPhrsRepetitions}x | Join https://t.me/airdropseeker_official`;
   try {
     statusBox.setContent(statusText);
   } catch (error) {
