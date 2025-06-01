@@ -7,7 +7,7 @@
     "start": "node index.js"
   },
   "keywords": [],
-  "author": "Bg-Win",
+  "author": "Bg Win",
   "license": "ISC",
   "description": "",
   "dependencies": {
