@@ -9,6 +9,7 @@ This is a Script For Auto Transfer, Swap, Daily Checkin, Claim Faucet
   </a>
 </div>
 
+Done
 ---
 
 ## This Bot From Chelvin
